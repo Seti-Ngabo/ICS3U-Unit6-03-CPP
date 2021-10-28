@@ -10,18 +10,13 @@
 
 template<size_t N>
 int lowestNumber(std::array<int, N> randoms) {
-    // this function creats random numbers
-    int maxNumber = 100;
-    int startingPoint = 0;
+    // this function creates random numbers
+    int maxNumber = 50;
 
     // process
-    for (int eachLoop : randoms) {
-        startingPoint += 1;
-        std::cout << "The random number " << startingPoint << " is: "
-        << eachLoop << std::endl;
-
-        if (eachLoop < maxNumber) {
-            maxNumber = eachLoop;
+    for (int firstEachLoop : randoms) {
+        if (firstEachLoop < maxNumber) {
+            maxNumber = firstEachLoop;
         }
     }
 
@@ -40,9 +35,11 @@ int main() {
     for (eachLoop = 0; eachLoop < 10; eachLoop++) {
         std::random_device rseed;
         std::mt19937 rgen(rseed());
-        std::uniform_int_distribution<int> idist(0, 100);
+        std::uniform_int_distribution<int> idist(0, 50);
         randomNumbers = idist(rgen);
         Numbers[eachLoop] = randomNumbers;
+        std::cout << "The random number " << eachLoop + 1 << " is: "
+        << randomNumbers << std::endl;
     }
 
     // call functions
